@@ -1,0 +1,56 @@
+<div class="content wrapper">
+
+  <div class="earth_box">
+    <div id="earth_div"></div>
+    <script src="http://www.webglearth.com/v2/api.js"></script>
+    <script>
+      function initialize() {
+        var earth = new WE.map('earth_div');
+        WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(earth);
+      }
+    </script>
+  </div>
+
+  <h3>あなたにぴったりの旅を探そう</h3>
+  <div class="search_form">
+    <h1>みんなのTabi検索</h1>
+    <%= search_form_for @q, url: search_tabis_path do |f| %>
+      <%= f.label :address_cont, '場所名' %>
+      <%= f.search_field :address_cont %>
+      <br>
+      <%= f.submit '検索' %>
+    <% end %>
+    <%= search_form_for @q, url: search_tabis_path do |f| %>
+      <%= f.label :title_or_content_cont, 'フリーワード' %>
+      <%= f.search_field :title_or_content_cont %>
+      <br>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+
+  <div class="tabi_container">
+    <div class="tabi_photos">
+      <% @random.each do |tabi| %>
+        <%= link_to show_tabis_path(tabi.id) do %>
+          <div class="tabi_box">
+            <% if tabi.tabi_photos.attached?%>
+                <%= image_tag tabi.tabi_photos[0], width: 250, height: 230, alt: "表示できません" %>
+                <div class="tabi_info">
+                  <p><%= tabi.title %></p>
+                </div>
+            <% else%>
+                <div style="width: 280px; height: 180px; background-color:orange">
+                  <p>画像がありません</p>
+                <div>
+                <div class="tabi_info">
+                  <p><%= tabi.title %></p>
+                </div>
+            <%end%>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

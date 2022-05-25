@@ -1,0 +1,32 @@
+<div class="content wrapper">
+  <p id="notice"><%= notice %></p>
+
+  <h1>わたしのTabi</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKiLoTUWe4YauUNQHWDxooVzN8UZIHeCs"></script></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tabis.each do |tabi| %>
+        <tr>
+          <td><%= tabi.title %></td>
+          <td><%= tabi.content %></td>
+          <td><%= link_to 'Show', tabi %></td>
+          <td><%= link_to 'Edit', edit_tabi_path(tabi) %></td>
+          <td><%= link_to 'Destroy', tabi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Tabi', new_tabi_path %>
+</div>

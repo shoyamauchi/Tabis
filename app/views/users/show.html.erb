@@ -1,0 +1,20 @@
+<div class="content wrapper">
+  <div>
+    <h1><%= current_user.name %> さんのユーザーページ</h1>
+
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar.variant(resize:'100x100').processed %>
+    <% end %>
+
+    <h3>ユーザー名</h3>
+    <%= current_user.name %>
+    <h3>メールアドレス</h3>
+    <%= @user.email %>
+    <h3>プロフィール</h3>
+    <% unless @user.profile == nil %>
+    <%= current_user.profile %>
+    <% end %>
+
+  </div>
+  <%= link_to 'プロフィール編集', edit_user_registration_path %>
+</div>

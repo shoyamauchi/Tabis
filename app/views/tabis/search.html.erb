@@ -1,0 +1,30 @@
+<div class="content wrapper">
+  <h1>検索結果</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Address</th>
+        <th>Date</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @results.each do |tabi| %>
+        <tr>
+          <td><%= tabi.title %></td>
+          <td><%= tabi.content %></td>
+          <td><%= tabi.address %></td>
+          <td><%= tabi.created_at %></td>
+          <td><%= link_to 'Show', tabi %></td>
+          <td><%= link_to 'Edit', edit_tabi_path(tabi) %></td>
+          <td><%= link_to 'Destroy', tabi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Top', top_tabis_path %>
+</div>

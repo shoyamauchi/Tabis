@@ -1,0 +1,39 @@
+<header id="header" class="wrapper">
+  <h1 class="site-title">
+    Tabis
+  </h1>
+
+  <% if user_signed_in? %>
+  <h1>こんにちは <%= current_user.name %> さん</h1>
+  <% end %>
+
+  <span class="nav_toggle">
+    <i></i>
+    <i></i>
+    <i></i>
+  </span>
+  <nav class="nav">
+    <% if user_signed_in? %>
+      <ul class="nav-menu">
+        <li class="nav_menu_li"><%= link_to "TOP", "/", class: "hoge" %></li>
+        <li class="nav_menu_li"><%= link_to "MYTABI", mytabi_tabis_path, class: "hoge" %></li>
+        <li class="nav_menu_li"><%= link_to "ALL", index_tabis_path, class: "hoge" %></li>
+        <li class="nav_menu_li"><%= link_to '設定', show_user_path, class: "hoge" %></li>
+        <li class="nav_menu_li"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "hoge" %></li>
+      </ul>
+    <% else %>
+      <ul class="nav-menu">
+        <li class="nav_menu_li"><%= link_to "新規登録", new_user_registration_path, class: "hoge" %></li>
+        <li class="nav_menu_li"><%= link_to "ログイン", new_user_session_path, class: "hoge" %></li>
+      </ul>
+    <% end %>
+  </nav>
+
+<!-- ボタンクリック -->
+  <script type="text/javascript">
+    $('.nav_toggle').on('click', function () {
+      $('.nav_toggle, .nav').toggleClass('show');
+    });
+  </script>
+
+</header>

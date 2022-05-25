@@ -1,0 +1,47 @@
+<div class="content wrapper">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @tabi.title %>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= @tabi.content %>
+  </p>
+
+  <h3>場所:</h3>
+  <div class="map">
+    <div id="map">
+    </div>
+  </div>
+
+  <div type="text/javascript">
+    <script>
+      function initMap(){
+        let map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: <%= @tabi.latitude %>, lng: <%= @tabi.longitude %> },
+        zoom: 15
+        });
+      }
+      
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBKiLoTUWe4YauUNQHWDxooVzN8UZIHeCs&callback=initMap">
+    </script>
+  </div>
+  <br>
+
+  <% if @tabi.tabi_photos.attached? %>
+    <div class="tabi_photo">
+      <% @tabi.tabi_photos.each do |image| %>
+        <div class="hoge">
+          <%= image_tag image, width: 300, height: 200 %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Edit', edit_tabi_path(@tabi) %>
+  <%= link_to 'Back', tabis_path %>
+</div>
