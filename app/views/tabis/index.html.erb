@@ -10,7 +10,7 @@
         <th>Content</th>
         <th>Address</th>
         <th>User</th>
-        <th colspan="3"></th>
+        <th colspan="1"></th>
       </tr>
     </thead>
 
@@ -20,17 +20,11 @@
           <td><%= tabi.title %></td>
           <td><%= tabi.content %></td>
           <td><%= tabi.address %></td>
-          <td><%= tabi.user.name %></td>
+          <td><%= link_to tabi.user.name, account_user_path(tabi.user_id) %></td>
           <td><%= link_to 'Show', tabi %></td>
-          <td><%= link_to 'Edit', edit_tabi_path(tabi) %></td>
-          <td><%= link_to 'Destroy', tabi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-  <br>
-
-  <%= link_to 'New Tabi', new_tabi_path %>
 
 </div>

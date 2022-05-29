@@ -19,10 +19,17 @@
 
   <div type="text/javascript">
     <script>
+      var map;
+      var marker;
+      var center = {lat: <%= @tabi.latitude %>, lng: <%= @tabi.longitude %> };
       function initMap(){
         let map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: <%= @tabi.latitude %>, lng: <%= @tabi.longitude %> },
         zoom: 15
+        });
+        marker = new google.maps.Marker({ // マーカーの追加
+              position: center, // マーカーを立てる位置を指定
+            map: map // マーカーを立てる地図を指定
         });
       }
       

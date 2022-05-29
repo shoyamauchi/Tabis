@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
   end
   get 'users/show', to: 'users#show', as: 'show_user'
+  get 'users/account/:id', to: 'users#account', as: 'account_user'
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
