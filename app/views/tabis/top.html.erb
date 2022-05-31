@@ -41,9 +41,7 @@
                   <p><%= tabi.title %></p>
                 </div>
             <% else%>
-                <div style="width: 250px; height: 230px; background-color:orange">
-                  <p>画像がありません</p>
-                <div>
+                <%= image_tag("noimage.png", :size => "250x230") %>
                 <div class="tabi_info">
                   <p><%= tabi.title %></p>
                 </div>
