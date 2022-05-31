@@ -6,6 +6,7 @@
   <table>
     <thead>
       <tr>
+        <th>Photo</th>
         <th>Title</th>
         <th>Content</th>
         <th>Address</th>
@@ -17,6 +18,13 @@
     <tbody>
       <% @tabis.each do |tabi| %>
         <tr>
+          <td>
+            <% if tabi.tabi_photos.attached?%>
+              <%= image_tag tabi.tabi_photos[0], :size => "130x100" %>
+            <% else%>
+              <%= image_tag("noimage.png", :size => "130x100") %>
+            <% end %>
+          </td>
           <td><%= tabi.title %></td>
           <td><%= tabi.content %></td>
           <td><%= tabi.address %></td>

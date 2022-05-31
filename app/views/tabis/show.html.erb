@@ -51,9 +51,9 @@
 
   <% if user_signed_in? && current_user != @tabi.user %>
     <% if current_user.favorite_find(@tabi.id) %>
-      <%= link_to 'お気に入りからはずす', destroy_favorite_path(@tabi.id), method: :delete %>
+      <%= link_to 'お気に入り解除', destroy_favorite_path(@tabi.id), method: :delete %>
     <% else %>
-      <%= link_to 'お気に入り登録する', create_favorite_path(@tabi.id), method: :post %>
+      <%= link_to 'お気に入り登録', create_favorite_path(@tabi.id), method: :post %>
     <% end %>
   <% end %>
   <%= link_to 'Edit', edit_tabi_path(@tabi) %>

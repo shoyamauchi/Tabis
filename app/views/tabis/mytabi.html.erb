@@ -6,9 +6,10 @@
   <table>
     <thead>
       <tr>
+        <th>Photo</th>
         <th>Title</th>
         <th>Content</th>
-        <th><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKiLoTUWe4YauUNQHWDxooVzN8UZIHeCs"></script></th>
+        <th>Address</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -16,8 +17,16 @@
     <tbody>
       <% @tabis.each do |tabi| %>
         <tr>
+          <td>
+            <% if tabi.tabi_photos.attached?%>
+              <%= image_tag tabi.tabi_photos[0], :size => "130x100" %>
+            <% else%>
+              <%= image_tag("noimage.png", :size => "130x100") %>
+            <% end %>
+          </td>
           <td><%= tabi.title %></td>
           <td><%= tabi.content %></td>
+          <td><%= tabi.address %></td>
           <td><%= link_to 'Show', tabi %></td>
           <td><%= link_to 'Edit', edit_tabi_path(tabi) %></td>
           <td><%= link_to 'Destroy', tabi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
