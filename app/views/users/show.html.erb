@@ -4,6 +4,8 @@
 
     <% if @user.avatar.attached? %>
       <%= image_tag @user.avatar.variant(resize:'100x100').processed %>
+    <% else %>
+      <%= image_tag("travel_ryokou.jpg", :size => "100x100") %>
     <% end %>
 
     <h3>ユーザー名</h3>
