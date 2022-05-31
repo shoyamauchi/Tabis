@@ -15,6 +15,36 @@
     <%= current_user.profile %>
     <% end %>
 
+    <%= link_to 'プロフィール編集', edit_user_registration_path %>
   </div>
-  <%= link_to 'プロフィール編集', edit_user_registration_path %>
+
+  <div>
+    <% if @favorite_list.present? %>
+      <h3>お気に入り</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Address</th>
+            <th>User</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @favorite_list.each do |tabi| %>
+            <tr>
+              <td><%= tabi.title %></td>
+              <td><%= tabi.content %></td>
+              <td><%= tabi.address %></td>
+              <td><%= link_to tabi.user.name, account_user_path(tabi.user_id) %></td>
+              <td><%= link_to 'Show', tabi %></td>
+              <td><%= link_to 'お気に入りからはずす', destroy_favorite_path(tabi.id), method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
 </div>

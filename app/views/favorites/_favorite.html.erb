@@ -1,0 +1,11 @@
+<% if !Favorite.exists?(user_id: current_user.id, favorite_id: favorite.id) %>
+  <%= link_to tabi_favorites_path(tabi.id), method: :tabi, remote: true, class:"like-btn" do %>
+    <i class="fas fa-star star-icon1"></i>
+  <% end %>
+  <span class="star-count1"><%= tabi.favorites.count %></span>
+<% else %>
+  <%= link_to tabi_favorites_path(tabi_id: tabi.id, id: tabi.favorites[0].id), method: :delete, remote: true, class:"like-btn" do %>
+    <i class="fas fa-star star-icon2"></i>
+  <% end %>
+  <span class="star-count2"><%= tabi.favorites.count %></span>
+<% end %>

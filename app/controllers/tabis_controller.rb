@@ -29,6 +29,8 @@ class TabisController < ApplicationController
   # GET /tabis/1 or /tabis/1.json
   def show
     @tabi = Tabi.find(params[:id])
+    favorites = Favorite.where(user_id: current_user.id).pluck(:tabi_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    @favorite_list = Tabi.find(favorites)  # postsテーブルから、お気に入り登録済みのレコードを取得
   end
 
   # GET /tabis/new
