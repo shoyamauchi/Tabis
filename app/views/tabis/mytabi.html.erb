@@ -31,6 +31,8 @@
           <td>
             <% if tabi.route_info == true %>
               <p>詳細あり</p>
+            <% elsif tabi.route_info == false %>
+              <p>なし</p>
             <% else %>
               <p></p>
             <% end %>
@@ -38,6 +40,8 @@
           <td>
             <% if tabi.covid_info == true %>
               <p>情報あり</p>
+            <% elsif tabi.covid_info == false %>
+              <p>なし</p>
             <% else %>
               <p></p>
             <% end %>
