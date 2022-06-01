@@ -92,6 +92,6 @@ class TabisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tabi_params
-      params.require(:tabi).permit(:title, :content, :address, :latitude, :longitude, tabi_photos: []).merge(user_id: current_user.id)
+      params.require(:tabi).permit(:title, :content, :address, :latitude, :longitude, :route_info, :covid_info, :start_date, tabi_photos: []).merge(user_id: current_user.id)
     end
 end

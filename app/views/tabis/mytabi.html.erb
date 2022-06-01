@@ -8,8 +8,10 @@
       <tr>
         <th>Photo</th>
         <th>Title</th>
-        <th>Content</th>
         <th>Address</th>
+        <th>行き方</th>
+        <th>covid-19</th>
+        <th>Date</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -20,13 +22,27 @@
           <td>
             <% if tabi.tabi_photos.attached?%>
               <%= image_tag tabi.tabi_photos[0], :size => "130x100" %>
-            <% else%>
+            <% else %>
               <%= image_tag("noimage.png", :size => "130x100") %>
             <% end %>
           </td>
           <td><%= tabi.title %></td>
-          <td><%= tabi.content %></td>
           <td><%= tabi.address %></td>
+          <td>
+            <% if tabi.route_info == true %>
+              <p>詳細あり</p>
+            <% else %>
+              <p></p>
+            <% end %>
+          </td>
+          <td>
+            <% if tabi.covid_info == true %>
+              <p>情報あり</p>
+            <% else %>
+              <p></p>
+            <% end %>
+          </td>
+          <td><%= tabi.start_date %></td>
           <td><%= link_to 'Show', tabi %></td>
           <td><%= link_to 'Edit', edit_tabi_path(tabi) %></td>
           <td><%= link_to 'Destroy', tabi, method: :delete, data: { confirm: 'Are you sure?' } %></td>

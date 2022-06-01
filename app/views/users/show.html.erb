@@ -42,7 +42,7 @@
               <td><%= tabi.address %></td>
               <td><%= link_to tabi.user.name, account_user_path(tabi.user_id) %></td>
               <td><%= link_to 'Show', tabi %></td>
-              <td><%= link_to 'お気に入りからはずす', destroy_favorite_path(tabi.id), method: :delete %></td>
+              <td><%= link_to 'お気に入り削除', destroy_favorite_path(tabi.id), method: :delete %></td>
             </tr>
           <% end %>
         </tbody>

@@ -18,6 +18,21 @@
     </div>
 
     <div class="field">
+      <%= form.label :route %>
+      <%= form.check_box :route_info %>
+    </div>
+
+    <div class="field">
+      <%= form.label :covit19 %>
+      <%= form.check_box :covit_info %>
+    </div>
+
+    <div class="field">
+      <%= form.label :date %>
+      <%= form.date_select :start_date, {:use_month_numbers => true}, selected: Date.today %>
+    </div>
+
+    <div class="field">
       <%= form.label :content %>
       <%= form.text_area :content %>
     </div>

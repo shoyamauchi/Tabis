@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_31_120450) do
+ActiveRecord::Schema.define(version: 2022_06_01_092910) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 2022_05_31_120450) do
     t.float "latitude"
     t.float "longitude"
     t.integer "user_id", null: false
+    t.boolean "route_info"
+    t.boolean "covid_info"
+    t.date "start_date"
     t.index ["user_id"], name: "index_tabis_on_user_id"
   end
 

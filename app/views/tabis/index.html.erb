@@ -8,8 +8,10 @@
       <tr>
         <th>Photo</th>
         <th>Title</th>
-        <th>Content</th>
         <th>Address</th>
+        <th>行き方</th>
+        <th>covid-19</th>
+        <th>Date</th>
         <th>User</th>
         <th colspan="1"></th>
       </tr>
@@ -26,8 +28,22 @@
             <% end %>
           </td>
           <td><%= tabi.title %></td>
-          <td><%= tabi.content %></td>
           <td><%= tabi.address %></td>
+          <td>
+            <% if tabi.route_info == true %>
+              <p>詳細あり</p>
+            <% else %>
+              <p></p>
+            <% end %>
+          </td>
+          <td>
+            <% if tabi.covid_info == true %>
+              <p>情報あり</p>
+            <% else %>
+              <p></p>
+            <% end %>
+          </td>
+          <td><%= tabi.start_date %></td>
           <td><%= link_to tabi.user.name, account_user_path(tabi.user_id) %></td>
           <td><%= link_to 'Show', tabi %></td>
         </tr>

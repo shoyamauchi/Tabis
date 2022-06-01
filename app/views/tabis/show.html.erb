@@ -7,6 +7,11 @@
   </p>
 
   <p>
+    <strong>Date:</strong>
+    <%= @tabi.start_date %>
+  </p>
+
+  <p>
     <strong>Content:</strong>
     <%= @tabi.content %>
   </p>
@@ -56,6 +61,8 @@
       <%= link_to 'お気に入り登録', create_favorite_path(@tabi.id), method: :post %>
     <% end %>
   <% end %>
-  <%= link_to 'Edit', edit_tabi_path(@tabi) %>
+  <% if current_user.id == @tabi.user_id %>
+    <%= link_to 'Edit', edit_tabi_path(@tabi) %>
+  <% end %>
   <%= link_to 'Back', tabis_path %>
 </div>
