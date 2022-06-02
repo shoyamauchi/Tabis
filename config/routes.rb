@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
   resources :tabis do
     resource :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
     collection do
       get 'search'
     end

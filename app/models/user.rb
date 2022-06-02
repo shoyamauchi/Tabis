@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # 関連付け
   has_many :tabis
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # 画像
   has_one_attached :avatar
 

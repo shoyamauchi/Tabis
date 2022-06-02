@@ -31,6 +31,8 @@ class TabisController < ApplicationController
     @tabi = Tabi.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:tabi_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
     @favorite_list = Tabi.find(favorites)  # postsテーブルから、お気に入り登録済みのレコードを取得
+    @comment = Comment.new
+    @comments = @tabi.comments
   end
 
   # GET /tabis/new

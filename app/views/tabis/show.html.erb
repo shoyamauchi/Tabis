@@ -65,4 +65,30 @@
     <%= link_to 'Edit', edit_tabi_path(@tabi) %>
   <% end %>
   <%= link_to 'Back', tabis_path %>
+
+  <h2>コメント一覧</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>コメント投稿者</th>
+        <th>コメント内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.comment %></td>
+          <td><%= link_to "削除", tabi_comment_path(@tabi, comment), method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= form_for [@tabi, @comment] do |f| %>
+    <%= f.text_field :comment %>
+    <br>
+    <%= f.submit 'コメントする' %>
+  <% end %>
+
 </div>
