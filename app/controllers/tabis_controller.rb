@@ -14,16 +14,16 @@ class TabisController < ApplicationController
   def search
     @results = @q.result
     @q = Tabi.ransack(params[:q])
-    @tabis = @q.result(distinct: true) 
+    @tabis = @q.result(distinct: true).order(updated_at: :desc)
   end
 
   def mytabi
-    @tabis = current_user.tabis
+    @tabis = current_user.tabis.order(updated_at: :desc)
   end
 
   # GET /tabis or /tabis.json
   def index
-    @tabis = Tabi.all
+    @tabis = Tabi.all.order(updated_at: :desc)
   end
 
   # GET /tabis/1 or /tabis/1.json

@@ -22,7 +22,7 @@
 }
 .content {
   padding-top: 120px;
-  padding-bottom: 160px;
+  padding-bottom: 120px;
 }
 
 #header {
@@ -47,25 +47,11 @@ body {
   padding: 0; margin: 0;
 }
 
-.earth_box {
-}
-
-#earth_div {
-  top: 0; right: 300; bottom: 0; left: 0; z-index: 0; position: absolute !important;
-}
-
-.search_form {
-  position: absolute;
-  width: 300px;
-  padding: 0; margin: 0;
-  z-index: 5;
-}
+/* ハンバーガーメニュー */
 
 li {
   list-style: none;
 }
-
-/* ハンバーガーメニュー */
 
 .nav_toggle {
   display: block;
@@ -120,12 +106,14 @@ li {
   visibility: visible;
 }
 
+/* フッター */
 
 #footer {
   justify-content: space-between;
   left: 0;
   right: 0;
   position: absolute;/*←絶対位置*/
+  
   bottom: 0; /*下に固定*/
 }
 
@@ -135,4 +123,88 @@ li {
 
 #footer .copyright {
   font-size: 0.625rem;
+}
+
+/* TOP */
+
+.earth_box {
+}
+
+#earth_div {
+  top: 0; right: 300; bottom: 0; left: 0; z-index: 0; position: absolute !important;
+}
+
+.top_catchcopy {
+  position: relative;
+  z-index: 5;
+}
+
+.top_catchcopy h1 {
+  text-align: center 
+}
+
+.search_form {
+  width: 300px;
+  margin-top: 80px;
+  margin-left: 30px;
+  padding: 0;
+  position: relative;
+  z-index: 5;
+}
+
+.space_container {
+  height: 200px;
+}
+
+/* search */
+
+.search-title {
+  text-align: center 
+}
+
+.search-container table{
+  padding-top: 50px;
+  margin: auto;
+}
+
+/* index */
+
+.index-title {
+  text-align: center 
+}
+
+.index-container table{
+  padding-top: 50px;
+  margin: auto;
+}
+
+/* mytabi */
+
+.mytabi-title {
+  text-align: center 
+}
+
+.mytabi-container table{
+  padding-top: 50px;
+  margin: auto;
+}
+
+/* sign up */
+
+.signup-container {
+  text-align: center;
+}
+
+/* user */
+
+.user-container {
+  text-align: center;
+}
+
+.user-container table {
+  margin: auto;
+}
+
+.favorite-container {
+  margin-top: 50px;
 }

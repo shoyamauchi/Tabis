@@ -12,8 +12,8 @@
     <% if user_signed_in? %>
       <ul class="nav-menu">
         <li class="nav_menu_li"><%= link_to "TOP", "/", class: "hoge" %></li>
-        <li class="nav_menu_li"><%= link_to "MYTABI", mytabi_tabis_path, class: "hoge" %></li>
-        <li class="nav_menu_li"><%= link_to "ALL", index_tabis_path, class: "hoge" %></li>
+        <li class="nav_menu_li"><%= link_to "わたしのTabi", mytabi_tabis_path, class: "hoge" %></li>
+        <li class="nav_menu_li"><%= link_to "みんなのTabi", index_tabis_path, class: "hoge" %></li>
         <li class="nav_menu_li"><%= link_to 'マイページ', show_user_path, class: "hoge" %></li>
         <li class="nav_menu_li"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "hoge" %></li>
       </ul>

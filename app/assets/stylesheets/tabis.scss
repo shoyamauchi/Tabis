@@ -16,12 +16,8 @@
 }
 
 .tabi_container {
-  margin: 5px;
   padding: 10px;
   background-color: transparent;
-  position: absolute;
-  top: 700px;
-  z-index: 5;
 }
 
 .tabi_photos {
@@ -31,6 +27,9 @@
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
 }
 
 .tabi_box {

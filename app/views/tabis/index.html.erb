@@ -1,58 +1,62 @@
 <div class="content wrapper">
   <p id="notice"><%= notice %></p>
 
-  <h1>みんなのTabi</h1>
+  <div class="index-title">
+    <h1>みんなのTabi</h1>
+  </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Photo</th>
-        <th>Title</th>
-        <th>Address</th>
-        <th>行き方</th>
-        <th>covid-19</th>
-        <th>Date</th>
-        <th>User</th>
-        <th colspan="1"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tabis.each do |tabi| %>
+  <div class="index-container">
+    <table>
+      <thead>
         <tr>
-          <td>
-            <% if tabi.tabi_photos.attached?%>
-              <%= image_tag tabi.tabi_photos[0], :size => "130x100" %>
-            <% else%>
-              <%= image_tag("noimage.png", :size => "130x100") %>
-            <% end %>
-          </td>
-          <td><%= tabi.title %></td>
-          <td><%= tabi.address %></td>
-          <td>
-            <% if tabi.route_info == true %>
-              <p>詳細あり</p>
-            <% elsif tabi.route_info == false %>
-              <p>なし</p>
-            <% else %>
-              <p></p>
-            <% end %>
-          </td>
-          <td>
-            <% if tabi.covid_info == true %>
-              <p>情報あり</p>
-            <% elsif tabi.covid_info == false %>
-              <p>なし</p>
-            <% else %>
-              <p></p>
-            <% end %>
-          </td>
-          <td><%= tabi.start_date %></td>
-          <td><%= link_to tabi.user.name, account_user_path(tabi.user_id) %></td>
-          <td><%= link_to 'Show', tabi %></td>
+          <th>Photo</th>
+          <th>Title</th>
+          <th>Address</th>
+          <th>行き方</th>
+          <th>covid-19</th>
+          <th>Date</th>
+          <th>User</th>
+          <th colspan="1"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @tabis.each do |tabi| %>
+          <tr>
+            <td>
+              <% if tabi.tabi_photos.attached?%>
+                <%= image_tag tabi.tabi_photos[0], :size => "130x100" %>
+              <% else%>
+                <%= image_tag("noimage.png", :size => "130x100") %>
+              <% end %>
+            </td>
+            <td><%= tabi.title %></td>
+            <td><%= tabi.address %></td>
+            <td>
+              <% if tabi.route_info == true %>
+                <p>詳細あり</p>
+              <% elsif tabi.route_info == false %>
+                <p>なし</p>
+              <% else %>
+                <p></p>
+              <% end %>
+            </td>
+            <td>
+              <% if tabi.covid_info == true %>
+                <p>情報あり</p>
+              <% elsif tabi.covid_info == false %>
+                <p>なし</p>
+              <% else %>
+                <p></p>
+              <% end %>
+            </td>
+            <td><%= tabi.start_date %></td>
+            <td><%= link_to tabi.user.name, account_user_path(tabi.user_id) %></td>
+            <td><%= link_to 'Show', tabi %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
 </div>

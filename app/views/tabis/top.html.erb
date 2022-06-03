@@ -7,13 +7,15 @@
       function initialize() {
         var earth = new WE.map('earth_div');
         WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-          attribution: '© OpenStreetMap contributors'
+          attribution: ''
         }).addTo(earth);
       }
     </script>
   </div>
 
-  <h2>あなたの知らない旅が見つかる</h2>
+  <div class="top_catchcopy">
+    <h1>あなたの旅が、誰かの旅のきっかけになる</h1>
+  </div>
   <div class="search_form">
     <h1>みんなのTabi検索</h1>
     <%= search_form_for @q, url: search_tabis_path do |f| %>
@@ -42,6 +44,9 @@
       <br>
       <%= f.submit '検索' %>
     <% end %>
+  </div>
+
+  <div class="space_container">
   </div>
 
   <div class="tabi_container">
