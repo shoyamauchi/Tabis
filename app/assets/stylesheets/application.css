@@ -19,6 +19,7 @@
   max-width: 1360px;
   margin: 0 auto;
   padding: 0 40px;
+  background-color: #ecfbfb;
 }
 .content {
   padding-top: 120px;
@@ -140,31 +141,72 @@ li {
 }
 
 .top_catchcopy h1 {
-  text-align: center 
+  text-align: center;
 }
 
-.search_form {
-  width: 300px;
-  margin-top: 80px;
-  margin-left: 30px;
-  padding: 0;
-  position: relative;
-  z-index: 5;
+.btn_box {
+  margin-top: 130px;
 }
 
-.space_container {
-  height: 200px;
+.mybtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1em 1em;
+  width: 140px;
+  color: #2285b1;
+  font-size: 17px;
+  font-weight: 700;
+  border: 3px solid #a0c4d3;
+  border-radius: 10px;
+}
+
+.mybtn:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #a0c4d3;
 }
 
 /* search */
 
-.search-title {
-  text-align: center 
+.search_form {
+  width: 500px;
+  margin-top: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  position: relative;
+  z-index: 5;
+  text-align: center;
 }
 
-.search-container table{
-  padding-top: 50px;
-  margin: auto;
+.search_form h1 {
+  text-align: center;
+}
+
+.search_form_label{
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: #2185b1;
+}
+
+.search_field{
+  text-align: center;
+}
+
+.space_container {
+  height: 50px;
+}
+
+.search_form_control {
+  display: inline-block;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  border: 2px solid #a0c4d3;
+  border-radius: 5px;
 }
 
 /* index */
@@ -187,6 +229,37 @@ li {
 .mytabi-container table{
   padding-top: 50px;
   margin: auto;
+}
+
+/* new */
+.new-title {
+  text-align: center;
+}
+
+.form-container {
+  text-align: center;
+}
+
+/* show */
+#map {
+  height: 300px;
+  width: 400px;
+}
+
+.show-container {
+  text-align: center;
+}
+
+.show-box {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* sign up */

@@ -1,4 +1,4 @@
-<div class="content wrapper">
+<div class="form-container">
   <%= form_with(model: tabi) do |form| %>
     <% if tabi.errors.any? %>
       <div id="error_explanation">
@@ -34,7 +34,7 @@
 
     <div class="field">
       <%= form.label :content %>
-      <%= form.text_area :content %>
+      <%= form.text_area :content, placeholder: "コロナ情報や、行き方の詳細があれば記入をお願いします。" %>
     </div>
 
     <div class="field">

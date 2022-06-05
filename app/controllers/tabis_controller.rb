@@ -12,9 +12,9 @@ class TabisController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.order(updated_at: :desc)
     @q = Tabi.ransack(params[:q])
-    @tabis = @q.result(distinct: true).order(updated_at: :desc)
+    @tabis = @q.result(distinct: true)
   end
 
   def mytabi

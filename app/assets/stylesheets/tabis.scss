@@ -1,10 +1,6 @@
 // Place all the styles related to the Tabis controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-#map {
-  height: 300px;
-  width: 400px;
-}
 
 .tabi_photo {
   display: flex;
@@ -42,4 +38,8 @@
   padding: 0px;
   height: 30px;
   display: flex;
+}
+
+.link-box {
+  text-align:right;
 }

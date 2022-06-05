@@ -15,31 +15,24 @@
 
   <div class="top_catchcopy">
     <h1>あなたの旅が、誰かの旅のきっかけになる</h1>
+    <div class="btn_box">
+      <%= button_to "旅を投稿する", {controller: "tabis", action: "new"}, {method: :get, class: "mybtn"} %>
+    </div>
   </div>
+  
   <div class="search_form">
-    <h1>みんなのTabi検索</h1>
+    <h1>あなたのまだ知らない旅が見つかる</h1>
+    <br>
     <%= search_form_for @q, url: search_tabis_path do |f| %>
-      <%= f.label :address_cont, '場所名' %>
-      <%= f.search_field :address_cont %>
+      <%= f.label :title_or_content_or_address_cont, 'みんなの旅を検索', class: 'search_form_label' %>
+      <br>
+      <%= f.search_field :title_or_content_or_address_cont, class: 'search_form_control', placeholder: "場所名や住所、フリーワードで検索" %>
       <br>
       <label>
-      <%= f.check_box :route_info_true %>routeあり
+      <%= f.check_box :route_info_true %><span>ルート情報あり</span>
       </label>
       <label>
-      <%= f.check_box :covid_info_true %>コロナ情報あり
-      </label>
-      <br>
-      <%= f.submit '検索' %>
-    <% end %>
-    <%= search_form_for @q, url: search_tabis_path do |f| %>
-      <%= f.label :title_or_content_cont, 'フリーワード' %>
-      <%= f.search_field :title_or_content_cont %>
-      <br>
-      <label>
-      <%= f.check_box :route_info_true %>routeあり
-      </label>
-      <label>
-      <%= f.check_box :covid_info_true %>コロナ情報あり
+      <%= f.check_box :covid_info_true %><span>コロナ情報あり</span>
       </label>
       <br>
       <%= f.submit '検索' %>
@@ -69,5 +62,11 @@
         <% end %>
       <% end %>
     </div>
+  </div>
+  
+  <div class="link-box">
+    <%= link_to(index_tabis_path, class: 'hoge') do %>
+      <h2 link_to>すべての旅を見る▷▷▷</h2>
+    <% end %>
   </div>
 </div>
