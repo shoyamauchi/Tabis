@@ -1,4 +1,5 @@
 class TabisController < ApplicationController
+  before_action :authenticate_user!, except: :top
   before_action :set_tabi, only: %i[ show edit update destroy ]
   before_action :set_q, only: [:top, :search]
 
