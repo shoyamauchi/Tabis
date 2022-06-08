@@ -1,21 +1,25 @@
-<div class="content wrapper">
-  <div class="user-container">
+<div class="user-container">
 
-    <% if resource.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= I18n.t("errors.messages.not_saved",
-                    count: resource.errors.count,
-                    resource: resource.class.model_name.human.downcase)
-          %>
-        </h2>
-        <ul>
-          <% resource.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= I18n.t("errors.messages.not_saved",
+                  count: resource.errors.count,
+                  resource: resource.class.model_name.human.downcase)
+        %>
+      </h2>
+      <ul>
+        <% if product.errors.include?(:name) %>
+          <li><p style="color: red;"><%= product.errors.full_messages_for(:name).first %></li>
+        <% end %>
+        <% if product.errors.include?(:email) %>
+          <li><p style="color: red;"><%= product.errors.full_messages_for(:email).first %></li>
+        <% end %>
+        <% if product.errors.include?(:password) %>
+          <li><p style="color: red;"><%= product.errors.full_messages_for(:password).first %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  </div>
 </div>
