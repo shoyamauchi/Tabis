@@ -331,11 +331,12 @@ li {
 .show-container table {
   padding-top: 20px;
   margin: auto;
+}
 
 /* --------------------- sign up ---------------------- */
 
 .signup-container {
-  text-align: center;
+  padding-top: 30px;
 }
 
 .field_with_errors {
