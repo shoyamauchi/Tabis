@@ -109,6 +109,10 @@ li {
   visibility: visible;
 }
 
+.nav_menu_li {
+  font-weight: bold; 
+}
+
 /* フッター */
 
 #footer {
@@ -239,7 +243,7 @@ li {
 }
 
 .link-box {
-  text-align:right;
+  text-align: right;
 }
 
 /* --------------- index --------------- */
@@ -264,12 +268,28 @@ li {
   margin: auto;
 }
 
+/* --------------- search --------------- */
+
+.search-title {
+  text-align: center 
+}
+
+.search-container table{
+  padding-top: 50px;
+  margin: auto;
+}
+
 /* ---------------------- new ----------------------- */
 .new-title {
   text-align: center;
 }
 
 .form-container {
+  text-align: center;
+}
+
+/* ---------------------- edit ----------------------- */
+.edit-title {
   text-align: center;
 }
 
@@ -303,6 +323,14 @@ li {
   background-color: transparent;
   width: 100%;
 }
+
+.comment-box {
+  padding-top: 30px;
+}
+
+.show-container table {
+  padding-top: 20px;
+  margin: auto;
 
 /* --------------------- sign up ---------------------- */
 

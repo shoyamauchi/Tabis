@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'create' do
+  describe '#create' do
     #1
     it "nameとemail、passwordとpassword_confirmationが存在すれば登録できること" do
       user = build(:user)
