@@ -84,6 +84,5 @@ rspec<br>
 ・Google Maps API<br>
 
 ## ER図
-
-![無題のマップ](https://user-images.githubusercontent.com/95741897/172984150-62849b2a-beb3-4508-b476-e72ae1aa06f0.png)
+![無題のマップ (1)](https://user-images.githubusercontent.com/95741897/173001092-745c2506-f5a5-4e0c-90c2-8e41e88ed7e2.png)
 
