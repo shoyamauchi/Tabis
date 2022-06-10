@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_122122) do
+ActiveRecord::Schema.define(version: 2022_06_08_042805) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,25 @@ ActiveRecord::Schema.define(version: 2022_05_23_122122) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "tabi_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tabi_id"], name: "index_comments_on_tabi_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tabi_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tabi_id"], name: "index_favorites_on_tabi_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "tabis", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -49,6 +68,9 @@ ActiveRecord::Schema.define(version: 2022_05_23_122122) do
     t.float "latitude"
     t.float "longitude"
     t.integer "user_id", null: false
+    t.boolean "route_info"
+    t.boolean "covid_info"
+    t.date "start_date"
     t.index ["user_id"], name: "index_tabis_on_user_id"
   end
 
@@ -60,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_122122) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
+    t.string "name", null: false
     t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -68,4 +90,8 @@ ActiveRecord::Schema.define(version: 2022_05_23_122122) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "tabis"
+  add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "tabis"
+  add_foreign_key "favorites", "users"
 end

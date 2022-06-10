@@ -1,20 +1,54 @@
 <div class="content wrapper">
-  <div>
-    <h1><%= current_user.name %> さんのユーザーページ</h1>
+  <div class="user-container">
+    <div>
+      <h1><%= current_user.name %> さんのユーザーページ</h1>
 
-    <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar.variant(resize:'100x100').processed %>
-    <% end %>
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar.variant(resize:'100x100').processed %>
+      <% else %>
+        <%= image_tag("travel_ryokou.jpg", :size => "100x100") %>
+      <% end %>
 
-    <h3>ユーザー名</h3>
-    <%= current_user.name %>
-    <h3>メールアドレス</h3>
-    <%= @user.email %>
-    <h3>プロフィール</h3>
-    <% unless @user.profile == nil %>
-    <%= current_user.profile %>
-    <% end %>
+      <h3>ユーザー名</h3>
+      <%= current_user.name %>
+      <h3>メールアドレス</h3>
+      <%= @user.email %>
+      <h3>プロフィール</h3>
+      <% unless @user.profile == nil %>
+      <%= current_user.profile %>
+      <% end %>
+      <br>
+      <%= link_to 'プロフィール編集', edit_user_registration_path %>
+    </div>
 
+    <div class="favorite-container">
+      <% if @favorite_list.present? %>
+        <h2>お気に入り</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Content</th>
+              <th>Address</th>
+              <th>User</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @favorite_list.each do |tabi| %>
+              <tr>
+                <td><%= tabi.title %></td>
+                <td><%= tabi.content %></td>
+                <td><%= tabi.address %></td>
+                <td><%= link_to tabi.user.name, account_user_path(tabi.user_id) %></td>
+                <td><%= link_to 'Show', tabi %></td>
+                <td><%= link_to 'お気に入り削除', destroy_favorite_path(tabi.id), method: :delete %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
   </div>
-  <%= link_to 'プロフィール編集', edit_user_registration_path %>
 </div>

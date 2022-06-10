@@ -1,24 +1,93 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Tabis
 
-Things you may want to cover:
+Tabisは、旅の情報共有サイトです。
+あなたの旅の記録や写真を位置情報付きで共有できます。
+また、あなたの知りたい旅の情報を検索することができます。
 
-* Ruby version
+<img width="1440" alt="スクリーンショット 2022-06-10 12 41 47" src="https://user-images.githubusercontent.com/95741897/172986568-95747ea7-315d-4179-8eb6-80d7f58a896d.png">
 
-* System dependencies
+<img width="1439" alt="スクリーンショット 2022-06-10 12 45 55" src="https://user-images.githubusercontent.com/95741897/172986612-244a2890-f7ec-4ac3-a4a6-0f514943736c.png">
 
-* Configuration
+## 目的
 
-* Database creation
+『旅の情報収集をするなら、誰しもがこのサイトを使う！』
+そんな旅に関する情報が集約するサイトがあればいいなと思い、作成しました。
 
-* Database initialization
+私は旅が好きで、これまでいろんな国や場所を訪れたのですが
+南米を旅した時には、情報の総数がそもそも少なく情報を得るのに苦労しました。
+また、昨年にアメリカを旅した時は、コロナ禍というのもあり、状況が流動的で、その時々の情報に対応するのが大変でした。
 
-* How to run the test suite
+以上のように、少しニッチな観光地であったり、コロナ禍で流動的な現状においても
+情報が集約していて、知りたい情報を検索しやすいサイトがあれば
+旅へのハードルが下がり、誰しもが旅を気軽に楽しめるようになるのではと考えました。
 
-* Services (job queues, cache servers, search engines, etc.)
+それゆえ、『旅の情報収集をするなら、誰しもがこのサイトを使う！』といった
+みんなが使うから情報が集まり、みんなが知りたい情報を得られる
+そんな旅の情報共有の場所を作りたいと思い、このサイトを作成しました。
 
-* Deployment instructions
+普段旅をしないような人にとっても、旅のとっかかりになったり
+ちょっとしたお出掛けにも使えるような扱いやすいサイトにしたいと思います。
 
-* ...
+まだ技術的に未熟なこともあり、機能面や使用感においてはまだまだですが
+今後、技術力の向上とともに、機能やユーザビリティを向上させていく予定です。
+
+それでは、現在のサイトの説明をします。
+
+## 使い方
+
+1. ログインする
+
+   ゲストログイン
+     email：gest@gest.com
+     password：gestuser
+
+<img width="1415" alt="スクリーンショット 2022-06-10 14 11 46" src="https://user-images.githubusercontent.com/95741897/172995385-13037e68-a461-42f8-93d3-720062e4ed8a.png">
+
+2. 旅を投稿する
+
+　　各項目を埋めて、登録ボタンをします。
+　　『場所名や住所』の項目は、入力すると、そのポイントの地図が登録されます。
+<img width="1437" alt="スクリーンショット 2022-06-10 14 04 17" src="https://user-images.githubusercontent.com/95741897/172995430-f908247a-e880-4d99-a1ad-d7c3ce6af9fb.png">
+
+3. 旅を検索する
+
+## こだわりポイント
+検索機能には、コロナ情報、ルート詳細の有無で絞り込みができるようにしました。
+TOPページに旅の投稿写真をランダム表示させ、ユーザーに興味を惹いて貰えるようにしました。
+
+
+## 機能一覧
+
+- ユーザー登録、ログイン機能(device)
+- 投稿機能
+    画像投稿(ActiveStorage AWS S3)
+    位置情報取得機能(geocoder)
+- お気に入り機能
+- コメント機能
+- 検索機能(ransack)
+
+##　テスト
+
+・rspec
+- 単体テスト
+- 機能テスト
+- 統合テスト
+- ...
+
+## 使用技術
+
+・Ruby 3.0.0
+・Ruby on Rails 6.1.6
+・mysql  Ver 8.0.29 
+・AWS
+・JavaScript
+・RSpec
+・Google Maps API
+
+## ER図
+
+![無題のマップ](https://user-images.githubusercontent.com/95741897/172984150-62849b2a-beb3-4508-b476-e72ae1aa06f0.png)
+
+

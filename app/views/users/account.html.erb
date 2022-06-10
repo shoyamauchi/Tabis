@@ -1,0 +1,18 @@
+<div class="content wrapper">
+  <div class="user-container">
+      <h1><%= @user.name %> さんのユーザーページ</h1>
+
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar.variant(resize:'100x100').processed %>
+      <% else %>
+        <%= image_tag("travel_ryokou.jpg", :size => "100x100") %>
+      <% end %>
+
+      <h3>ユーザー名</h3>
+      <%= @user.name %>
+      <h3>プロフィール</h3>
+      <% unless @user.profile == nil %>
+      <%= @user.profile %>
+      <% end %>
+  </div>
+</div>

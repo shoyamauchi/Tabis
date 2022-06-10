@@ -1,4 +1,5 @@
 class TabisController < ApplicationController
+  before_action :authenticate_user!, except: :top
   before_action :set_tabi, only: %i[ show edit update destroy ]
   before_action :set_q, only: [:top, :search]
 
@@ -12,23 +13,27 @@ class TabisController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.order(updated_at: :desc)
     @q = Tabi.ransack(params[:q])
-    @tabis = @q.result(distinct: true) 
+    @tabis = @q.result(distinct: true)
   end
 
   def mytabi
-    @tabis = current_user.tabis
+    @tabis = current_user.tabis.order(updated_at: :desc)
   end
 
   # GET /tabis or /tabis.json
   def index
-    @tabis = Tabi.all
+    @tabis = Tabi.all.order(updated_at: :desc)
   end
 
   # GET /tabis/1 or /tabis/1.json
   def show
     @tabi = Tabi.find(params[:id])
+    favorites = Favorite.where(user_id: current_user.id).pluck(:tabi_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
+    @favorite_list = Tabi.find(favorites)  # postsテーブルから、お気に入り登録済みのレコードを取得
+    @comment = Comment.new
+    @comments = @tabi.comments
   end
 
   # GET /tabis/new
@@ -90,6 +95,6 @@ class TabisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tabi_params
-      params.require(:tabi).permit(:title, :content, :address, :latitude, :longitude, tabi_photos: []).merge(user_id: current_user.id)
+      params.require(:tabi).permit(:title, :content, :address, :latitude, :longitude, :route_info, :covid_info, :start_date, tabi_photos: []).merge(user_id: current_user.id)
     end
 end

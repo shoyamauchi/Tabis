@@ -10,7 +10,8 @@ module Tabilog
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-    config.i18n.default_locale = :ja
+    I18n.config.available_locales = :ja # 使用できる言語を文字列もしくは配列で指定する
+    I18n.config.default_locale = :ja
 
     # Configuration for the application, engines, and railties goes here.
     #

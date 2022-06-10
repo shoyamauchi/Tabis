@@ -1,30 +1,62 @@
 <div class="content wrapper">
-  <h1>検索結果</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Address</th>
-        <th>Date</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <div class="search-container">
 
-    <tbody>
-      <% @results.each do |tabi| %>
+    <div class="search-title">
+      <h1>検索結果</h1>
+    </div>
+
+    <table>
+      <thead>
         <tr>
-          <td><%= tabi.title %></td>
-          <td><%= tabi.content %></td>
-          <td><%= tabi.address %></td>
-          <td><%= tabi.created_at %></td>
-          <td><%= link_to 'Show', tabi %></td>
-          <td><%= link_to 'Edit', edit_tabi_path(tabi) %></td>
-          <td><%= link_to 'Destroy', tabi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Photo</th>
+          <th>Title</th>
+          <th>Address</th>
+          <th>行き方</th>
+          <th>covid-19</th>
+          <th>Date</th>
+          <th>User</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <%= link_to 'Top', top_tabis_path %>
+      <tbody>
+        <% @results.each do |tabi| %>
+          <tr>
+          <td>
+              <% if tabi.tabi_photos.attached?%>
+                <%= image_tag tabi.tabi_photos[0], :size => "130x100" %>
+              <% else%>
+                <%= image_tag("noimage.png", :size => "130x100") %>
+              <% end %>
+            </td>
+            <td><%= tabi.title %></td>
+            <td><%= tabi.address %></td>
+            <td>
+              <% if tabi.route_info == true %>
+                <p>詳細あり</p>
+              <% elsif tabi.route_info == false %>
+                <p>なし</p>
+              <% else %>
+                <p></p>
+              <% end %>
+            </td>
+            <td>
+              <% if tabi.covid_info == true %>
+                <p>情報あり</p>
+              <% elsif tabi.covid_info == false %>
+                <p>なし</p>
+              <% else %>
+                <p></p>
+              <% end %>
+            </td>
+            <td><%= tabi.start_date %></td>
+            <td><%= link_to tabi.user.name, account_user_path(tabi.user_id) %></td>
+            <td><%= link_to 'Show', tabi %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to 'Top', top_tabis_path %>
+  </div>
 </div>

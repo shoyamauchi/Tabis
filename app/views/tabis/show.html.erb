@@ -1,47 +1,105 @@
 <div class="content wrapper">
-  <p id="notice"><%= notice %></p>
+  <div class="show-container">
+    <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Title:</strong>
-    <%= @tabi.title %>
-  </p>
+    <div class="show-box">
+      <h2>
+        <strong>Title:</strong>
+        <%= @tabi.title %>
+      </h2><br>
 
-  <p>
-    <strong>Content:</strong>
-    <%= @tabi.content %>
-  </p>
-
-  <h3>場所:</h3>
-  <div class="map">
-    <div id="map">
-    </div>
-  </div>
-
-  <div type="text/javascript">
-    <script>
-      function initMap(){
-        let map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: <%= @tabi.latitude %>, lng: <%= @tabi.longitude %> },
-        zoom: 15
-        });
-      }
+      <p>
+        <strong>User:</strong>
+        <%= @tabi.user.name %>
+      </p>
       
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBKiLoTUWe4YauUNQHWDxooVzN8UZIHeCs&callback=initMap">
-    </script>
-  </div>
-  <br>
+      <p>
+        <strong>Date:</strong>
+        <%= @tabi.start_date %>
+      </p>
 
-  <% if @tabi.tabi_photos.attached? %>
-    <div class="tabi_photo">
-      <% @tabi.tabi_photos.each do |image| %>
-        <div class="hoge">
-          <%= image_tag image, width: 300, height: 200 %>
+      <p>
+        <strong>Content:</strong>
+        <%= @tabi.content %>
+      </p>
+    </div>
+
+    <h3>場所:<%= @tabi.address %></h3>
+
+    <div class="map-box">
+      <div class="map">
+        <div id="map">
         </div>
+      </div>
+
+      <div type="text/javascript">
+        <script>
+          var map;
+          var marker;
+          var center = {lat: <%= @tabi.latitude %>, lng: <%= @tabi.longitude %> };
+          function initMap(){
+            let map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: <%= @tabi.latitude %>, lng: <%= @tabi.longitude %> },
+            zoom: 15
+            });
+            marker = new google.maps.Marker({ // マーカーの追加
+                  position: center, // マーカーを立てる位置を指定
+                map: map // マーカーを立てる地図を指定
+            });
+          }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBKiLoTUWe4YauUNQHWDxooVzN8UZIHeCs&callback=initMap"></script>
+      </div>
+    </div>
+    <br>
+
+    <% if @tabi.tabi_photos.attached? %>
+      <div class="tabi_photo">
+        <% @tabi.tabi_photos.each do |image| %>
+          <div class="hoge">
+            <%= image_tag image, width: 300, height: 200 %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? && current_user != @tabi.user %>
+      <% if current_user.favorite_find(@tabi.id) %>
+        <%= link_to 'お気に入り解除', destroy_favorite_path(@tabi.id), method: :delete %>
+      <% else %>
+        <%= link_to 'お気に入り登録', create_favorite_path(@tabi.id), method: :post %>
+      <% end %>
+    <% end %>
+    <% if current_user.id == @tabi.user_id %>
+      <%= link_to 'Edit', edit_tabi_path(@tabi) %>
+    <% end %>
+    <%= link_to 'Back', :back %>
+
+    <div class="comment-box">
+      <h2>コメント一覧</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>コメント投稿者</th>
+            <th>コメント内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= comment.user.name %></td>
+              <td><%= comment.comment %></td>
+              <td><%= link_to "削除", tabi_comment_path(@tabi, comment), method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= form_for [@tabi, @comment] do |f| %>
+        <%= f.text_field :comment %>
+        <br>
+        <%= f.submit 'コメントする' %>
       <% end %>
     </div>
-  <% end %>
-
-  <%= link_to 'Edit', edit_tabi_path(@tabi) %>
-  <%= link_to 'Back', tabis_path %>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="content wrapper">
+<div class="form-container">
   <%= form_with(model: tabi) do |form| %>
     <% if tabi.errors.any? %>
       <div id="error_explanation">
@@ -18,17 +18,32 @@
     </div>
 
     <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content %>
+      <%= form.label :ルート情報あり %>
+      <%= form.check_box :route_info %>
     </div>
 
     <div class="field">
-      <%= form.label :address, '場所' %>
+      <%= form.label :コロナ情報あり %>
+      <%= form.check_box :covid_info %>
+    </div>
+
+    <div class="field">
+      <%= form.label :date %>
+      <%= form.date_select :start_date, {:use_month_numbers => true}, selected: Date.today %>
+    </div>
+
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content, size: "30x4", placeholder: "コロナ情報や、行き方の詳細があれば記入をお願いします。" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :address, '場所名や住所' %>
       <%= form.text_field :address, class: 'form-control' %>
     </div>
 
-    <div class="field">
-      <%= form.label :tabi_photo %>
+    <div class="field photo-input">
+      <%= form.label :photos %>
       <%= form.file_field :tabi_photos, multiple: true %>
     </div>
 
