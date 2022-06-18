@@ -21,8 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
   database: tabis_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+  username: <%= Rails.application.credentials.db[:user_name] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:endpoint] %>
+  pool: 20
+  timeout: 1000
