@@ -4,7 +4,7 @@ class TabisController < ApplicationController
   before_action :set_q, only: [:top, :search]
 
   def top
-    @random = Tabi.order("RANDOM()").limit(8)
+    @random = Tabi.order("RAND()").limit(8)
     # 検索オブジェクト
     @search = Tabi.ransack(params[:q])
     # 検索結果
