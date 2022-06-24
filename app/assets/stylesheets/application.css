@@ -16,13 +16,38 @@
 
  /* ---------------- body ----------------- */
 
- .wrapper {
+.wrapper {
   width: 100%;
   max-width: 1360px;
   margin: 0 auto;
   padding: 0 40px;
   background-color: #ecfbfb;
 }
+
+@media screen and (max-width: 1300px) {
+  .wrapper {
+   max-width: 1060px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .wrapper {
+   max-width: 760px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+   max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+   max-width: 320px;
+  }
+}
+
 .content {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -182,6 +207,12 @@ li {
   position: relative;
   z-index: 5;
   text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .search_form {
+    width: 300px;
+  }
 }
 
 .search_form h1 {
