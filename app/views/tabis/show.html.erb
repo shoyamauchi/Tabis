@@ -82,13 +82,15 @@
           <tr>
             <th>コメント投稿者</th>
             <th>コメント内容</th>
+            <th>投稿日時</th>
           </tr>
         </thead>
         <tbody>
           <% @comments.each do |comment| %>
             <tr>
-              <td><%= comment.user.name %></td>
+              <td><%= link_to comment.user.name, account_user_path(comment.user_id) %></td>
               <td><%= comment.comment %></td>
+              <td><%= comment.created_at %></td>
               <td><%= link_to "削除", tabi_comment_path(@tabi, comment), method: :delete %></td>
             </tr>
           <% end %>
@@ -96,7 +98,7 @@
       </table>
 
       <%= form_for [@tabi, @comment] do |f| %>
-        <%= f.text_field :comment %>
+        <%= f.text_area :comment, size: "30x2", placeholder: "質問やコメントを記入してください"%>
         <br>
         <%= f.submit 'コメントする' %>
       <% end %>
