@@ -8,12 +8,12 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to request.referer
     else
-      redirect_to show_tabi_path
+      redirect_to show_tabis_path(@tabi.id)
     end
   end
 
   def destroy
-    @tabi = Tabi.find(params[:post_id])
+    @tabi = Tabi.find(params[:tabi_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to request.referer

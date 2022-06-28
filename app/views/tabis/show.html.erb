@@ -77,10 +77,25 @@
 
     <div class="comment-box">
       <h2>コメント一覧</h2>
+      <% if @error_comment.present? %>
+        <div id="error_explanation">
+          <h2><%= @error_comment.errors.count %>件のエラーが発生しました。</h2>
+          <ul>
+            <% @error_comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= form_for [@tabi, @comment] do |f| %>
+        <%= f.text_area :comment, size: "30x2", placeholder: "質問やコメントを記入してください"%>
+        <br>
+        <%= f.submit 'コメントする' %>
+      <% end %>
       <table>
         <thead>
           <tr>
-            <th>コメント投稿者</th>
+            <th>投稿者</th>
             <th>コメント内容</th>
             <th>投稿日時</th>
           </tr>
@@ -91,17 +106,11 @@
               <td><%= link_to comment.user.name, account_user_path(comment.user_id) %></td>
               <td><%= comment.comment %></td>
               <td><%= comment.created_at %></td>
-              <td><%= link_to "削除", tabi_comment_path(@tabi, comment), method: :delete %></td>
+              <td><%= link_to "削除", tabi_comment_path(@tabi, comment.id), method: :delete %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-      <%= form_for [@tabi, @comment] do |f| %>
-        <%= f.text_area :comment, size: "30x2", placeholder: "質問やコメントを記入してください"%>
-        <br>
-        <%= f.submit 'コメントする' %>
-      <% end %>
     </div>
   </div>
 </div>

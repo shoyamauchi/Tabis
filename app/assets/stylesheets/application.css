@@ -364,6 +364,27 @@ li {
   margin: auto;
 }
 
+.comment-box table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.comment-box table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+.comment-box tbody tr:hover{
+  background-color: #d4f0fd;
+}
+
+.comment-box table th,.comment-box table td{
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
 /* --------------------- sign up ---------------------- */
 
 .signup-container {
