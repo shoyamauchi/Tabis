@@ -10,6 +10,10 @@ RSpec.describe Comment, type: :model do
       it "コメント文を入力済みであれば保存できる" do
         expect(comment).to be_valid
       end
+
+      it "コメントが自分の投稿なら削除できる" do
+        expect(comment).to be_valid
+      end
     end
 
     context 'コメントを保存できない場合' do

@@ -106,7 +106,9 @@
               <td><%= link_to comment.user.name, account_user_path(comment.user_id) %></td>
               <td><%= comment.comment %></td>
               <td><%= comment.created_at %></td>
-              <td><%= link_to "削除", tabi_comment_path(@tabi, comment.id), method: :delete %></td>
+              <% if current_user.id == comment.user_id %>
+                <td><%= link_to "削除", tabi_comment_path(@tabi, comment.id), method: :delete %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
